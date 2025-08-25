@@ -13,3 +13,37 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# =========================================
+# Bawaan dari Android Studio (Sudah Bagus)
+# =========================================
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+
+# File Kunci Rahasia dan Konfigurasi Layanan
+# JANGAN PERNAH commit file-file ini ke repositori publik.
+google-services.json
+*.jks
+*.keystore
+
+# File Output Build
+# Untuk memastikan file rilis tidak pernah terlacak.
+*.apk
+*.aab
+*.ap_
+
+# File Log dan Laporan
+lint/reports/
+
