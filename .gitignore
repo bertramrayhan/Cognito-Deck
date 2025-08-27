@@ -47,3 +47,5 @@ google-services.json
 # File Log dan Laporan
 lint/reports/
 
+/design
+

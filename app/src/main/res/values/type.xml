@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.App.HeadlineSmall" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primaryText</item>
+    </style>
+
+    <style name="TextAppearance.App.TitleLarge" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/primaryText</item>
+    </style>
+
+    <style name="TextAppearance.App.TitleMedium" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/primaryText</item>
+    </style>
+
+    <style name="TextAppearance.App.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/primaryText</item>
+    </style>
+
+    <style name="TextAppearance.App.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/cardBackground</item>
+    </style>
+
+    <style name="TextAppearance.App.BodyMedium" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@color/secondaryText</item>
+    </style>
+</resources>
