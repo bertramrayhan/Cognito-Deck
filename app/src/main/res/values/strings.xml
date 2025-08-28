@@ -6,4 +6,7 @@
     <string name="placeholderTotalCards">10 Cards</string>
     <string name="placeholderTopicName">Topic</string>
     <string name="titleCollectionsFragment">My Topics</string>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="placeholder_theme_child_title">Content Title</string>
 </resources>

@@ -6,4 +6,5 @@
     <color name="primaryText">#333333</color>
     <color name="secondaryText">#888888</color>
     <color name="accentColor">#007BFF</color>
+    <color name="border">#E0E0E0</color>
 </resources>

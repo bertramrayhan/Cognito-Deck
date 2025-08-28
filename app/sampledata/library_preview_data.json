@@ -1,0 +1,17 @@
+{
+  "group1": {
+    "header": "UJIAN JLPT",
+    "item1": "Level N5",
+    "item2": "Level N4"
+  },
+  "group2": {
+    "header": "TEMA SEHARI-HARI",
+    "item1": "Area Kuliner",
+    "item2": "Area Transportasi",
+    "item3": "Area Perkantoran"
+  },
+  "group3": {
+    "header": "KOSAKATA TUNGGAL",
+    "item1": "Semua Kosakata"
+  }
+}

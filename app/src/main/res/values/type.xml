@@ -17,6 +17,13 @@
         <item name="android:textColor">@color/primaryText</item>
     </style>
 
+    <style name="TextAppearance.App.TitleMedium.Bold" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/primaryText</item>
+    </style>
+
     <style name="TextAppearance.App.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textSize">18sp</item>
