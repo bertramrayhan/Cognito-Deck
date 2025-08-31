@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/navigationMyCollection"
-        android:name="com.example.cognitodeck.MyCollectionsFragment"
+        android:name="com.example.cognitodeck.fragments.MyCollectionsFragment"
         android:label="fragment_my_collections"
-        tools:layout="@layout/fragment_my_collections"/>
+        tools:layout="@layout/fragment_my_collections">
+        <action
+            android:id="@+id/action_navigationMyCollection_to_libraryFragment"
+            app:destination="@id/navigationLibrary" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigationLibrary"
+        android:name="com.example.cognitodeck.fragments.LibraryFragment"
+        android:label="fragment_library"
+        tools:layout="@layout/fragment_library" />
 </navigation>
