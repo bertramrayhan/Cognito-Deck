@@ -27,7 +27,7 @@ Our core philosophy is to force active recall and contextual application. We do 
 - **Platform:** Android (Java)
 - **Architecture:** Single Activity, Multiple Fragments (using Android Navigation Component)
 - **Database:** Room with a pre-populated SQLite database
-- **Processing Data** Python
+- **Processing Data:** Python
 
 ## 🤝 How to Contribute
 
