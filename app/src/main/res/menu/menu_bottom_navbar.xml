@@ -3,9 +3,11 @@
 
     <item
         android:id="@+id/navigationMyCollection"
-        android:title="@string/nameNavigationMyCollection"/>
+        android:title="@string/nameNavigationMyCollection"
+        android:icon="@drawable/mycollection_icon"/>
 
     <item
         android:id="@+id/navigationLibrary"
-        android:title="@string/nameNavigationLibrary"/>
+        android:title="@string/nameNavigationLibrary"
+        android:icon="@drawable/library_icon"/>
 </menu>

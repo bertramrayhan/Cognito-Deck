@@ -10,7 +10,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer"
-        android:name="com.example.cognitodeck.fragments.MyCollectionsFragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,6 +31,8 @@
         app:labelVisibilityMode="labeled"
         app:itemActiveIndicatorStyle="@null"
         app:itemTextAppearanceActive="@style/TextAppearance.App.LabelLarge"
-        app:itemTextAppearanceInactive="@style/TextAppearance.App.LabelLarge"/>
+        app:itemTextAppearanceInactive="@style/TextAppearance.App.LabelLarge"
+        app:itemIconTint="@color/bottom_nav_item_tint"
+        app:itemTextColor="@color/bottom_nav_item_tint"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

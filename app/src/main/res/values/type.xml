@@ -25,7 +25,7 @@
     </style>
 
     <style name="TextAppearance.App.BodyLarge" parent="TextAppearance.Material3.BodyLarge">
-        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:fontFamily">@font/roboto</item>z
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/primaryText</item>
     </style>

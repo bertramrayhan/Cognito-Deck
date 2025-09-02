@@ -7,4 +7,5 @@
     <color name="secondaryText">#888888</color>
     <color name="accentColor">#007BFF</color>
     <color name="border">#E0E0E0</color>
+    <color name="hintText">#888888</color>
 </resources>
