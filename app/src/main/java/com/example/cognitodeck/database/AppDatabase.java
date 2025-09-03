@@ -7,6 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.cognitodeck.database.dao.ThemesDao;
+import com.example.cognitodeck.database.dao.TopicsDao;
 import com.example.cognitodeck.database.entity.Themes;
 import com.example.cognitodeck.database.entity.TopicVocabularyRelation;
 import com.example.cognitodeck.database.entity.Topics;
@@ -20,6 +21,7 @@ import com.example.cognitodeck.database.entity.Vocabularies;
 }, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract ThemesDao themesDao();
+    public abstract TopicsDao topicsDao();
 
     private static volatile AppDatabase INSTANCE;
 

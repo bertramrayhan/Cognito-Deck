@@ -6,7 +6,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "themes")
-public class Themes {
+public class Themes implements LibraryListItem{
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "theme_id")
     private int themeId;
