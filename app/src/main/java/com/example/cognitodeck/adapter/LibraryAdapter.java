@@ -1,5 +1,6 @@
 package com.example.cognitodeck.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,13 @@ public class LibraryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public LibraryAdapter(List<LibraryListItem> libraryItemList) {
         this.libraryItemList = libraryItemList;
+    }
+
+    public void setLibraryItemList(List<LibraryListItem> libraryItemList) {
+        this.libraryItemList.clear();
+        this.libraryItemList.addAll(libraryItemList);
+        Log.d("LibraryAdapter", "Data set. New size: " + this.libraryItemList.size());
+        notifyDataSetChanged();
     }
 
     @Override
@@ -62,6 +70,7 @@ public class LibraryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemCount() {
+        Log.d("LibraryAdapter", "get item count: " + this.libraryItemList.size());
         return libraryItemList.size();
     }
 

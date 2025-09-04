@@ -1,5 +1,6 @@
 package com.example.cognitodeck.database.entity;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
@@ -23,20 +24,21 @@ public class Topics {
     @ColumnInfo(name = "topic_id")
     private int topicId;
 
+    @NonNull
     @ColumnInfo(name = "topic_name")
     private String topicName;
 
     @ColumnInfo(name = "theme_id")
     private int themeId;
 
-    public Topics(int topicId, String topicName, int themeId) {
+    public Topics(int topicId, @NonNull String topicName, int themeId) {
         this.topicId = topicId;
         this.topicName = topicName;
         this.themeId = themeId;
     }
 
     @Ignore
-    public Topics(String topicName, int themeId) {
+    public Topics(@NonNull String topicName, int themeId) {
         this.topicName = topicName;
         this.themeId = themeId;
     }
@@ -49,11 +51,12 @@ public class Topics {
         this.topicId = topicId;
     }
 
+    @NonNull
     public String getTopicName() {
         return topicName;
     }
 
-    public void setTopicName(String topicName) {
+    public void setTopicName(@NonNull String topicName) {
         this.topicName = topicName;
     }
 

@@ -4,8 +4,10 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 
+import com.example.cognitodeck.database.entity.ThemeWithTopics;
 import com.example.cognitodeck.database.entity.Themes;
 
 import java.util.List;
@@ -21,9 +23,9 @@ public interface ThemesDao {
     @Delete
     void delete(Themes theme);
 
-    //Query annotation for custom query rather than Insert, Delete, or Update
+    @Transaction
     @Query("SELECT * FROM themes ORDER BY theme_name ASC")
-    List<Themes> getAllThemes();
+    List<ThemeWithTopics> getAllThemesWithTopics();
 
     @Query("SELECT * FROM themes WHERE theme_id = :id")
     Themes getThemeById(int id);
