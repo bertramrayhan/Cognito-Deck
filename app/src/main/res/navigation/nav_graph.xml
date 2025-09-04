@@ -18,5 +18,14 @@
         android:id="@+id/navigationLibrary"
         android:name="com.example.cognitodeck.fragments.LibraryFragment"
         android:label="fragment_library"
-        tools:layout="@layout/fragment_library" />
+        tools:layout="@layout/fragment_library" >
+        <action
+            android:id="@+id/action_navigationLibrary_to_vocabularyListFragment"
+            app:destination="@id/navigationVocabularyList" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigationVocabularyList"
+        android:name="com.example.cognitodeck.fragments.VocabularyListFragment"
+        android:label="fragment_vocabulary_list"
+        tools:layout="@layout/fragment_vocabulary_list" />
 </navigation>
