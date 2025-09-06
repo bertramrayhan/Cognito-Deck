@@ -7,11 +7,11 @@
     android:id="@+id/toolbarMyCollections">
 
     <TextView
-        android:id="@+id/titleApp"
+        android:id="@+id/topicName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
+        android:text="@string/placeholderTopicName"
         android:layout_gravity="center"
-        style="@style/TextAppearance.App.TitleMedium" />
+        style="@style/TextAppearance.App.HeadlineSmall" />
 
 </com.google.android.material.appbar.MaterialToolbar>

@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
@@ -39,11 +40,14 @@ public class MainActivity extends AppCompatActivity {
             return WindowInsetsCompat.CONSUMED;
         });
 
-        fragmentContainer = findViewById(R.id.fragmentContainer);
+//        fragmentContainer = findViewById(R.id.fragmentContainer);
+//
+//        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
+//        NavController navController = navHostFragment.getNavController();
+//
+//        NavigationUI.setupWithNavController(bottomNav, navController);
 
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
-        NavController navController = navHostFragment.getNavController();
-
-        NavigationUI.setupWithNavController(bottomNav, navController);
+        //CARA KEDUA
+        NavController navController = Navigation.findNavController(this, R.id.fragmentContainer);
     }
 }

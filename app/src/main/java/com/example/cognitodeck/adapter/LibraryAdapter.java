@@ -65,6 +65,14 @@ public class LibraryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }else {
             TopicDisplayItem item = (TopicDisplayItem) libraryItemList.get(position);
             ((TopicViewHolder) holder).bind(item);
+
+            holder.itemView.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
     }
 
