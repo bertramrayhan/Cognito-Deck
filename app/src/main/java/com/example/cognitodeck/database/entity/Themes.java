@@ -6,6 +6,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.util.Objects;
+
 @Entity(tableName = "themes")
 public class Themes implements LibraryListItem{
     //tipe data primitif seharusnya tidak usah diberi non null
@@ -44,5 +46,17 @@ public class Themes implements LibraryListItem{
 
     public void setThemeName(@NonNull String themeName) {
         this.themeName = themeName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Themes themes = (Themes) o;
+        return Objects.equals(themeName, themes.themeName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(themeName);
     }
 }

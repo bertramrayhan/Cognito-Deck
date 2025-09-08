@@ -10,9 +10,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,17 +17,12 @@ import android.view.ViewGroup;
 import com.example.cognitodeck.R;
 import com.example.cognitodeck.adapter.LibraryAdapter;
 import com.example.cognitodeck.data.DummyLibraryData;
-import com.example.cognitodeck.database.AppDatabase;
-import com.example.cognitodeck.database.dao.ThemesDao;
 import com.example.cognitodeck.database.entity.LibraryListItem;
-import com.example.cognitodeck.database.entity.ThemeWithTopics;
-import com.example.cognitodeck.database.entity.TopicDisplayItem;
 import com.example.cognitodeck.viewModel.LibraryViewModel;
+import com.google.android.material.appbar.AppBarLayout;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class LibraryFragment extends Fragment {
 
@@ -66,24 +58,36 @@ public class LibraryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //add toolbar to appbar layout
+        AppBarLayout appBarLayout = requireActivity().findViewById(R.id.appBarLayout);
+
+        if (appBarLayout != null) {
+            appBarLayout.removeAllViews();
+        }
+
+        getLayoutInflater().inflate(R.layout.toolbar_library, appBarLayout, true);
+
         libraryRecyclerView = view.findViewById(R.id.libraryRecyclerView);
         libraryRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext()));
 
-        libraryAdapter = new LibraryAdapter(new ArrayList<>());
+        libraryAdapter = new LibraryAdapter();
         libraryRecyclerView.setAdapter(libraryAdapter);
 
         if(TESTING == 1){
             List<LibraryListItem> dummyItems = DummyLibraryData.getDummyLibraryItems();
-            libraryAdapter.setLibraryItemList(dummyItems);
+            libraryAdapter.submitList(dummyItems);
         }else {
             libraryViewModel = new ViewModelProvider(this).get(LibraryViewModel.class);
 
-            libraryViewModel.getLibraryListItemLiveData().observe(getViewLifecycleOwner(), new Observer<List<LibraryListItem>>() {
+            // instant get to prevent flickering
+            List<LibraryListItem> currentData = libraryViewModel.getLibraryListItemLiveData().getValue();
+            if (currentData != null && !currentData.isEmpty()) {
+                libraryAdapter.submitList(currentData);
+            }
 
-                @Override
-                public void onChanged(List<LibraryListItem> libraryListItems) {
-                    libraryAdapter.setLibraryItemList(libraryListItems);
-                }
+            // observe for new data
+            libraryViewModel.getLibraryListItemLiveData().observe(getViewLifecycleOwner(), libraryListItems -> {
+                libraryAdapter.submitList(libraryListItems);
             });
         }
 

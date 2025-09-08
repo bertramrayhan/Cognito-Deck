@@ -1,5 +1,7 @@
 package com.example.cognitodeck.database.entity;
 
+import java.util.Objects;
+
 public class TopicDisplayItem implements LibraryListItem{
     public enum PositionInGroup {
         FIRST, MIDDLE, LAST, SINGLE
@@ -19,5 +21,17 @@ public class TopicDisplayItem implements LibraryListItem{
 
     public PositionInGroup getPosition() {
         return position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        TopicDisplayItem that = (TopicDisplayItem) o;
+        return Objects.equals(topic, that.topic) && position == that.position;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(topic, position);
     }
 }

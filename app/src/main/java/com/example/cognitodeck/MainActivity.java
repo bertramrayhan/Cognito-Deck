@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -40,14 +41,29 @@ public class MainActivity extends AppCompatActivity {
             return WindowInsetsCompat.CONSUMED;
         });
 
-//        fragmentContainer = findViewById(R.id.fragmentContainer);
-//
-//        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
-//        NavController navController = navHostFragment.getNavController();
-//
-//        NavigationUI.setupWithNavController(bottomNav, navController);
+        fragmentContainer = findViewById(R.id.fragmentContainer);
 
-        //CARA KEDUA
-        NavController navController = Navigation.findNavController(this, R.id.fragmentContainer);
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
+        NavController navController = navHostFragment.getNavController();
+
+        bottomNav.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            NavOptions navOptions = new NavOptions.Builder()
+                    .setLaunchSingleTop(true)
+                    .setPopUpTo(navController.getGraph().getStartDestinationId(), false)
+                    .setEnterAnim(0)
+                    .setExitAnim(0)
+                    .setPopEnterAnim(0)
+                    .setPopExitAnim(0)
+                    .build();
+
+            try {
+                navController.navigate(itemId, null, navOptions);
+                return true;
+            } catch (IllegalArgumentException e) {
+                return false;
+            }
+        });
     }
 }

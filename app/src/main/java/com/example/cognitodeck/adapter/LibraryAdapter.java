@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cognitodeck.R;
@@ -16,27 +18,51 @@ import com.example.cognitodeck.database.entity.TopicDisplayItem;
 
 import java.util.List;
 
-public class LibraryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-
-    private List<LibraryListItem> libraryItemList;
+public class LibraryAdapter extends ListAdapter<LibraryListItem, RecyclerView.ViewHolder> {
 
     private static final int TYPE_THEME = 0;
     private static final int TYPE_TOPIC = 1;
 
-    public LibraryAdapter(List<LibraryListItem> libraryItemList) {
-        this.libraryItemList = libraryItemList;
+    public LibraryAdapter() {
+        super(DIFF_CALLBACK);
     }
 
-    public void setLibraryItemList(List<LibraryListItem> libraryItemList) {
-        this.libraryItemList.clear();
-        this.libraryItemList.addAll(libraryItemList);
-        Log.d("LibraryAdapter", "Data set. New size: " + this.libraryItemList.size());
-        notifyDataSetChanged();
-    }
+    private static final DiffUtil.ItemCallback<LibraryListItem> DIFF_CALLBACK = new DiffUtil.ItemCallback<LibraryListItem>() {
+
+        @Override
+        public boolean areItemsTheSame(@NonNull LibraryListItem oldItem, @NonNull LibraryListItem newItem) {
+            if(oldItem instanceof Themes && newItem instanceof Themes){
+                return ((Themes) oldItem).getThemeId() == ((Themes) newItem).getThemeId();
+            }
+            if(oldItem instanceof TopicDisplayItem && newItem instanceof TopicDisplayItem){
+                return ((TopicDisplayItem) oldItem).getTopic().getTopicId() == ((TopicDisplayItem) newItem).getTopic().getTopicId();
+            }
+
+            return false;
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull LibraryListItem oldItem, @NonNull LibraryListItem newItem) {
+            return oldItem.equals(newItem);
+
+//            if (oldItem.getClass() != newItem.getClass()) {
+//                return false;
+//            }
+//
+//            if (oldItem instanceof Themes) {
+//                return ((Themes)oldItem).equals((Themes) newItem);
+//            }
+//            if (oldItem instanceof TopicDisplayItem) {
+//                return ((TopicDisplayItem)oldItem).equals((TopicDisplayItem) newItem);
+//            }
+//
+//            return false;
+        }
+    };
 
     @Override
     public int getItemViewType(int position) {
-        LibraryListItem item = libraryItemList.get(position);
+        LibraryListItem item = getItem(position);
         if(item instanceof Themes){
             return TYPE_THEME;
         }else {
@@ -60,10 +86,10 @@ public class LibraryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if(holder.getItemViewType() == TYPE_THEME){
-            Themes item = (Themes) libraryItemList.get(position);
+            Themes item = (Themes) getItem(position);
             ((ThemeViewHolder) holder).bind(item);
         }else {
-            TopicDisplayItem item = (TopicDisplayItem) libraryItemList.get(position);
+            TopicDisplayItem item = (TopicDisplayItem) getItem(position);
             ((TopicViewHolder) holder).bind(item);
 
             holder.itemView.setOnClickListener(new View.OnClickListener(){
@@ -74,12 +100,6 @@ public class LibraryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 }
             });
         }
-    }
-
-    @Override
-    public int getItemCount() {
-        Log.d("LibraryAdapter", "get item count: " + this.libraryItemList.size());
-        return libraryItemList.size();
     }
 
     public class ThemeViewHolder extends RecyclerView.ViewHolder {
