@@ -38,14 +38,5 @@ public class MyCollectionsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        //add toolbar to appbar layout
-        AppBarLayout appBarLayout = requireActivity().findViewById(R.id.appBarLayout);
-
-        if (appBarLayout != null) {
-            appBarLayout.removeAllViews();
-        }
-
-        getLayoutInflater().inflate(R.layout.toolbar_my_collections, appBarLayout, true);
     }
 }

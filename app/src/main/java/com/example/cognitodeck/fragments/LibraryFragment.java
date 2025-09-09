@@ -58,15 +58,6 @@ public class LibraryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //add toolbar to appbar layout
-        AppBarLayout appBarLayout = requireActivity().findViewById(R.id.appBarLayout);
-
-        if (appBarLayout != null) {
-            appBarLayout.removeAllViews();
-        }
-
-        getLayoutInflater().inflate(R.layout.toolbar_library, appBarLayout, true);
-
         libraryRecyclerView = view.findViewById(R.id.libraryRecyclerView);
         libraryRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext()));
 
@@ -90,7 +81,5 @@ public class LibraryFragment extends Fragment {
                 libraryAdapter.submitList(libraryListItems);
             });
         }
-
-
     }
 }

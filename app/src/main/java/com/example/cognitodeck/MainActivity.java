@@ -20,7 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNav;
-    private FragmentContainerView fragmentContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,29 +40,9 @@ public class MainActivity extends AppCompatActivity {
             return WindowInsetsCompat.CONSUMED;
         });
 
-        fragmentContainer = findViewById(R.id.fragmentContainer);
-
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
         NavController navController = navHostFragment.getNavController();
 
-        bottomNav.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-
-            NavOptions navOptions = new NavOptions.Builder()
-                    .setLaunchSingleTop(true)
-                    .setPopUpTo(navController.getGraph().getStartDestinationId(), false)
-                    .setEnterAnim(0)
-                    .setExitAnim(0)
-                    .setPopEnterAnim(0)
-                    .setPopExitAnim(0)
-                    .build();
-
-            try {
-                navController.navigate(itemId, null, navOptions);
-                return true;
-            } catch (IllegalArgumentException e) {
-                return false;
-            }
-        });
+        NavigationUI.setupWithNavController(bottomNav, navController);
     }
 }
