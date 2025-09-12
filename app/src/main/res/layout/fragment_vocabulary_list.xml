@@ -23,7 +23,8 @@
             app:title="@string/placeholderTopicName"
             android:id="@+id/toolbarVocabularyList"
             app:titleCentered="true"
-            app:titleTextAppearance="@style/TextAppearance.App.HeadlineSmall">
+            app:titleTextAppearance="@style/TextAppearance.App.HeadlineSmall"
+            app:navigationIconTint="@color/accentColor">
         </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>

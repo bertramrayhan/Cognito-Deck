@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -65,6 +66,18 @@ public class MainActivity extends AppCompatActivity {
                 bottomNav.setVisibility(View.VISIBLE);
             } else {
                 bottomNav.setVisibility(View.GONE);
+            }
+        });
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                boolean canNavigateUp = navController.navigateUp();
+
+                if (!canNavigateUp) {
+                    setEnabled(false);
+                    getOnBackPressedDispatcher().onBackPressed();
+                }
             }
         });
     }
