@@ -1,6 +1,8 @@
 package com.example.cognitodeck;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.activity.EdgeToEdge;
@@ -13,12 +15,17 @@ import androidx.navigation.NavController;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class MainActivity extends AppCompatActivity {
 
+    private NavController navController;
     private BottomNavigationView bottomNav;
 
     @Override
@@ -40,9 +47,25 @@ public class MainActivity extends AppCompatActivity {
             return WindowInsetsCompat.CONSUMED;
         });
 
-        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
-        NavController navController = navHostFragment.getNavController();
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.fragmentContainer);
+        navController = navHostFragment.getNavController();
+
+        Set<Integer> topLevelDestinations = new HashSet<>();
+        topLevelDestinations.add(R.id.navigationMyCollections);
+        topLevelDestinations.add(R.id.navigationLibrary);
+
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(topLevelDestinations).build();
 
         NavigationUI.setupWithNavController(bottomNav, navController);
+
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+
+            if (topLevelDestinations.contains(destination.getId())) {
+                bottomNav.setVisibility(View.VISIBLE);
+            } else {
+                bottomNav.setVisibility(View.GONE);
+            }
+        });
     }
 }

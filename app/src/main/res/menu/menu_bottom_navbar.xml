@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigationMyCollection"
-        android:title="@string/nameNavigationMyCollection"
+        android:id="@+id/navigationMyCollections"
+        android:title="@string/nameNavigationMyCollections"
         android:icon="@drawable/mycollection_icon"/>
 
     <item

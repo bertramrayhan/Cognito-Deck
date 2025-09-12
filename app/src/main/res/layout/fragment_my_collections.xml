@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryBackground">
+    android:background="@color/primaryBackground"
+    android:id="@+id/navigationMyCollections">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -18,16 +19,10 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title=""
-            android:id="@+id/toolbarMyCollections">
-
-            <TextView
-                android:id="@+id/titleApp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_name"
-                android:layout_gravity="center"
-                style="@style/TextAppearance.App.TitleMedium" />
+            app:title="@string/app_name"
+            android:id="@+id/toolbarMyCollections"
+            app:titleTextAppearance="@style/TextAppearance.App.TitleMedium"
+            app:titleCentered="true">
 
         </com.google.android.material.appbar.MaterialToolbar>
 

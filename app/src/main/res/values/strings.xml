@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Cognito Deck</string>
     <string name="nameNavigationLibrary">Library</string>
-    <string name="nameNavigationMyCollection">My Collection</string>
+    <string name="nameNavigationMyCollections">My Collection</string>
     <string name="placeholderPracticeBtn">Practice</string>
     <string name="placeholderTotalCards">10 Cards</string>
     <string name="placeholderTopicName">Topic</string>

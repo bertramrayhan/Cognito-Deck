@@ -23,8 +23,11 @@ public class LibraryAdapter extends ListAdapter<LibraryListItem, RecyclerView.Vi
     private static final int TYPE_THEME = 0;
     private static final int TYPE_TOPIC = 1;
 
-    public LibraryAdapter() {
+    private final TopicClickListener topicClickListener;
+
+    public LibraryAdapter(TopicClickListener topicClickListener) {
         super(DIFF_CALLBACK);
+        this.topicClickListener = topicClickListener;
     }
 
     private static final DiffUtil.ItemCallback<LibraryListItem> DIFF_CALLBACK = new DiffUtil.ItemCallback<LibraryListItem>() {
@@ -92,13 +95,7 @@ public class LibraryAdapter extends ListAdapter<LibraryListItem, RecyclerView.Vi
             TopicDisplayItem item = (TopicDisplayItem) getItem(position);
             ((TopicViewHolder) holder).bind(item);
 
-            holder.itemView.setOnClickListener(new View.OnClickListener(){
-
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
+            holder.itemView.setOnClickListener(v -> topicClickListener.onTopicClick(item));
         }
     }
 
@@ -148,5 +145,9 @@ public class LibraryAdapter extends ListAdapter<LibraryListItem, RecyclerView.Vi
 
             itemView.setBackgroundResource(backgroundResource);
         }
+    }
+
+    public interface TopicClickListener {
+        void onTopicClick(TopicDisplayItem topicDisplayitem);
     }
 }

@@ -2,9 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/navigationVocabularyList"
     tools:context=".fragments.VocabularyListFragment"
     android:background="@color/primaryBackground">
 
@@ -20,17 +20,10 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title=""
-            android:id="@+id/toolbarMyCollections">
-
-            <TextView
-                android:id="@+id/topicName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/placeholderTopicName"
-                android:layout_gravity="center"
-                style="@style/TextAppearance.App.HeadlineSmall" />
-
+            app:title="@string/placeholderTopicName"
+            android:id="@+id/toolbarVocabularyList"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/TextAppearance.App.HeadlineSmall">
         </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>

@@ -4,9 +4,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,17 +19,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.cognitodeck.MainActivity;
 import com.example.cognitodeck.R;
 import com.example.cognitodeck.adapter.LibraryAdapter;
 import com.example.cognitodeck.data.DummyLibraryData;
 import com.example.cognitodeck.database.entity.LibraryListItem;
+import com.example.cognitodeck.database.entity.TopicDisplayItem;
 import com.example.cognitodeck.viewModel.LibraryViewModel;
 import com.google.android.material.appbar.AppBarLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LibraryFragment extends Fragment {
+public class LibraryFragment extends Fragment implements LibraryAdapter.TopicClickListener {
 
     private static final int TESTING = 0;
 
@@ -61,7 +68,7 @@ public class LibraryFragment extends Fragment {
         libraryRecyclerView = view.findViewById(R.id.libraryRecyclerView);
         libraryRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext()));
 
-        libraryAdapter = new LibraryAdapter();
+        libraryAdapter = new LibraryAdapter(this);
         libraryRecyclerView.setAdapter(libraryAdapter);
 
         if(TESTING == 1){
@@ -81,5 +88,17 @@ public class LibraryFragment extends Fragment {
                 libraryAdapter.submitList(libraryListItems);
             });
         }
+    }
+
+    @Override
+    public void onTopicClick(TopicDisplayItem topic) {
+        int topicId = topic.getTopic().getTopicId();
+
+        NavController navController = Navigation.findNavController(requireView());
+
+        Bundle args = new Bundle();
+        args.putInt("topicId", topicId);
+
+        navController.navigate(R.id.action_navigationLibrary_to_vocabularyListFragment, args);
     }
 }

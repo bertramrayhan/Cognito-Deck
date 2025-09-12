@@ -31,8 +31,8 @@ public abstract class AppDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     AppDatabase.class, "cognito_deck.db")
-                            .createFromAsset("database/cognito_deck_db.sqlite3")
-                            // .fallbackToDestructiveMigration() // Opsi jika ada perubahan versi (akan kita bahas nanti)
+                            .createFromAsset("database/cognito_deck_db.sqlite")
+                            // .fallbackToDestructiveMigration() // Opsi jik`a ada perubahan versi (akan kita bahas nanti)
                             .build();
                 }
             }
